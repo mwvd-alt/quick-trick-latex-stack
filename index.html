@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live LaTeX Rendering</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        #rendered {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Live LaTeX Rendering</h1>
+    <textarea id="latexInput" placeholder="Type your LaTeX code here"></textarea>
+    <div id="rendered"></div>
+
+    <script>
+        function renderLatex() {
+            var input = document.getElementById('latexInput').value;
+            var rendered = document.getElementById('rendered');
+            rendered.innerHTML = '\\(' + input + '\\)';
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, rendered]);
+        }
+
+        // Trigger rendering on input change
+        document.getElementById('latexInput').addEventListener('input', renderLatex);
+    </script>
+
+</body>
+</html>
